@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  grader:
+    image: seanahn/boj-grader
+    build: .
+    volumes:
+      - ".:/workspace"
+      - "../sean:/workspace/sean"
+    command: python -u grade.py
+  selenium:
+    image: selenium/standalone-chrome
+    volumes:
+      - "/dev/shm:/dev/shm"
+    ports:
+      - "4444:4444"
